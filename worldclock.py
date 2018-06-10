@@ -167,12 +167,13 @@ class Clock:
 class Clocks(Gtk.DrawingArea):
 
     def __init__(self, conf=None, size=CLOCK_DA_DIAMETER,
-                 disable_seconds=False):
+                 disable_seconds=False, disable_resize=False):
         super(Clocks, self).__init__()
         self._conf = conf
         self._clocks = []
         self.size = size
         self.show_seconds = not disable_seconds
+        self.disable_resize = disable_resize
 
         self._parse_conf()
 
@@ -199,7 +200,7 @@ class Clocks(Gtk.DrawingArea):
         GObject.timeout_add(100, self.on_timeout)
         win = Gtk.Window()
         win.set_title('World Clock')
-        # win.set_resizable(False)
+        win.set_resizable(not self.disable_resize)
         win.connect('destroy', lambda w: Gtk.main_quit())
         win.set_default_size(int(self.width), int(self.height))
         win.resize(int(self.width), int(self.height))
@@ -231,6 +232,11 @@ def main():
                         default=CLOCK_DA_DIAMETER)
     parser.add_argument("-d", "--disable-seconds", help="Disable seconds in "
                         "clock face", action="store_true", default=False)
+    parser.add_argument("-r", "--disable-resize", help="Disable resize of "
+                        "the window. Note, that with single clock you'll "
+                        "have at least 200px width no matter if you put "
+                        "something less in size option.", action="store_true",
+                        default=False)
     args = parser.parse_args()
     args = parser.parse_args()
 
@@ -251,7 +257,10 @@ def main():
     with open(conf_path) as fobj:
         conf = yaml.load(fobj)
 
-    clocks = Clocks(conf, size=args.size, disable_seconds=args.disable_seconds)
+    clocks = Clocks(conf,
+                    size=args.size,
+                    disable_seconds=args.disable_seconds,
+                    disable_resize=args.disable_resize)
     clocks.run()
 
 
