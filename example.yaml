@@ -1,0 +1,33 @@
+---
+-
+  -
+    tz: US/Pacific
+    label: Portland Oregon, US
+  -
+    tz: US/Central
+    label: Austin Texas, US
+  -
+    tz: US/Eastern
+    label: New York, US
+  -
+    tz: UTC
+    label: UTC
+  -
+    tz: Europe/London
+    label: London, UK
+-
+  -
+    tz: Europe/Warsaw
+    label: Warsaw, Poland
+  -
+    tz: Europe/Moscow
+    label: Moscow, Russia
+  -
+    tz: Asia/Shanghai
+    label: Shanghai, China
+  -
+    tz: Asia/Tokyo
+    label: Tokyo, Japan
+  -
+    tz: Australia/Melbourne
+    label: Melbourne, Australia
