@@ -134,6 +134,7 @@ You can experiment to get the layout of your choice.
 License
 -------
 
-
+This software is licensed under 3-clause BSD license. See LICENSE file for
+details.
 
 .. _example.yaml: example.yaml
