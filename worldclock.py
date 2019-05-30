@@ -255,7 +255,7 @@ def main():
         conf_path = args.config
 
     with open(conf_path) as fobj:
-        conf = yaml.load(fobj)
+        conf = yaml.safe_load(fobj)
 
     clocks = Clocks(conf,
                     size=args.size,
