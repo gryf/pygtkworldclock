@@ -8,7 +8,7 @@ Requirement
 
 - Python3
 - PyCairo
-- PyGObject
+- PyGObject (GTK3)
 
 Configuration
 -------------
@@ -68,7 +68,7 @@ and the result:
 .. image:: /images/vertical.png
    :alt: single clock
 
-Same in horizontal arragement:
+Same in horizontal arrangement:
 
 .. code:: yaml
 

@@ -35,8 +35,8 @@ import sys
 import cairo
 import gi
 gi.require_version("Gtk", "3.0")
+from gi.repository import GLib
 from gi.repository import Gtk
-from gi.repository import GObject
 import pytz
 import yaml
 
@@ -191,13 +191,13 @@ class Clocks(Gtk.DrawingArea):
             width = len(row) if len(row) > width else width
             for col_no, conf in enumerate(row):
                 self._clocks.append(Clock(conf, row_no, col_no, self.size,
-                                         self.show_seconds))
+                                          self.show_seconds))
 
         self.width = self.size * width
 
     def run(self):
         self.connect('draw', self._draw)
-        GObject.timeout_add(100, self.on_timeout)
+        GLib.timeout_add(100, self.on_timeout)
         win = Gtk.Window()
         win.set_title('World Clock')
         win.set_resizable(not self.disable_resize)
